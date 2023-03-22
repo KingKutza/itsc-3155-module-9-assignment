@@ -39,8 +39,14 @@ def search_movies():
 
 @app.get('/movies/<int:movie_id>')
 def get_single_movie(movie_id: int):
-    # TODO: Feature 4
-    return render_template('get_single_movie.html')
+    try: 
+        movie = movie_repository[movie_id]
+    except:
+        return '<h1 style="text-align: center;">404 NOT FOUND!</h1>'
+    t = movie.title
+    d = movie.director
+    r = movie.rating
+    return render_template('get_single_movie.html', movie_id=movie_id, movie_title=t, movie_director=d, movie_rating=r)
 
 
 @app.get('/movies/<int:movie_id>/edit')
