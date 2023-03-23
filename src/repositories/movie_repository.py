@@ -12,7 +12,10 @@ def get_movie_repository():
         """In memory database which is a simple dict of movies"""
 
         def __init__(self) -> None:
-            self._db: dict[int, Movie] = {}
+            movie1 = Movie(1, "The Shawshank Redemption", "Frank Darabont", 9)
+            movie2 = Movie(2, "The Godfather", "Francis Ford Coppola", 9)
+            movie3 = Movie(3, "Pulp Fiction", "Quentin Tarantino", 9)
+            self._db: dict[int, Movie] = {movie1.movie_id: movie1, movie2.movie_id: movie2, movie3.movie_id: movie3}
 
         def get_all_movies(self) -> dict[int, Movie]:
             """Simply return all movies from the in-memory database"""
